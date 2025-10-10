@@ -11,6 +11,7 @@ import Pyro5.api
 import Pyro5.socketutil
 import Pyro5.nameserver
 
+from Servidor.model.aluno_util.aluno_controller import AlunoController
 from Servidor.model.sql_connect.sql import SQLConnection
 from model import *
 
@@ -21,8 +22,8 @@ if __name__ == "__main__":
     my_ip = Pyro5.socketutil.get_ip_address(hostname, workaround127=True)
 
     # Start SQL connection
-    sql = SQLConnection()
-    sql.connect()
+    # sql = SQLConnection()
+    # sql.connect()
 
     # # Run NameServer
     # try:
@@ -34,7 +35,7 @@ if __name__ == "__main__":
     #     exit(1)
 
     # Expose classes to Pyro5
-    aluno_exp = Pyro5.api.expose(Aluno)
+    aluno_exp = Pyro5.api.expose(AlunoController)
     avaliacao_exp = Pyro5.api.expose(Avaliacao)
     disciplina_exp = Pyro5.api.expose(Disciplina)
     frequencia_exp = Pyro5.api.expose(Frequencia)
@@ -42,7 +43,7 @@ if __name__ == "__main__":
     # Starting RMI server
 
     Pyro5.api.serve({
-        aluno_exp:  "Aluno",
+        aluno_exp:  "AlunoController",
         avaliacao_exp: "Avaliacao",
         disciplina_exp: "Disciplina",
         frequencia_exp: "Frequencia"
@@ -60,6 +61,6 @@ if __name__ == "__main__":
     #     daemon.requestLoop()
 
     # clean up
-    nameserverDaemon.close()
-    broadcastServer.close()
+    # nameserverDaemon.close()
+    # broadcastServer.close()
     print("done")
