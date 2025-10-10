@@ -5,3 +5,4 @@
 /Cliente/model/aluno_util/__pycache__
 /Servidor/model/clear_screen/__pycache__
 *.pyc
+.idea/workspace.xml
