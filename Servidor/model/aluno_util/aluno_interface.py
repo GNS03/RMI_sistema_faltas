@@ -6,7 +6,7 @@ from Servidor.model import Aluno
 class AlunoInterface:
 
     @abstractmethod
-    def inserir(self, aluno: Aluno):
+    def inserir(self, matricula: int, nome: str, idade: int, periodo: int):
         raise NotImplementedError
 
     @abstractmethod
@@ -14,7 +14,7 @@ class AlunoInterface:
         raise NotImplementedError
 
     @abstractmethod
-    def editar(self, aluno: Aluno):
+    def editar(self, matricula: int, nome: str, idade: int, periodo: int):
         raise NotImplementedError
 
     @abstractmethod

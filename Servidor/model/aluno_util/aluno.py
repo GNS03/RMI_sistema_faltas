@@ -1,14 +1,28 @@
-from Servidor.model import Disciplina
+# from Servidor.model import Disciplina
 
 
 class Aluno:
 
-    def __init__(self, matricula: int = 0, nome: str = "", idade: int = 0, disciplinas_matriculadas: list[Disciplina] = []):
+    def __init__(self, matricula: int = 0, nome: str = "", idade: int = 0, periodo: int = 0, disciplinas_matriculadas=None):
+
+        # if disciplinas_matriculadas is None:
+        #     disciplinas_matriculadas = []
 
         self.matricula = matricula
         self.nome = nome
         self.idade = idade
-        self.disciplinas_matriculadas: list[Disciplina] = disciplinas_matriculadas
+        self.periodo = periodo
+        # self.turno = turno
+        # self.disciplinas_matriculadas: list[int] = disciplinas_matriculadas
 
     def hello(self):
-        print("Hello")
+        print(f"Hello {self.nome}")
+
+    def to_dict(self):
+        return {
+            "matricula": self.matricula,
+            "nome": self.nome,
+            "idade": self.idade,
+            "periodo": self.periodo,
+            # "disciplinas_matriculadas": self.disciplinas_matriculadas,
+        }
