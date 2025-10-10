@@ -2,3 +2,6 @@
 /.idea
 /.idea
 /Cliente/model/__pycache__
+/Cliente/model/aluno_util/__pycache__
+/Servidor/model/clear_screen/__pycache__
+*.pyc
