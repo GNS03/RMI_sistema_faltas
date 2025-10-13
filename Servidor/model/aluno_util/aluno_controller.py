@@ -1,4 +1,4 @@
-from Servidor.model import Aluno, clear_screen
+from Servidor.model import Aluno  # , clear_screen
 from Servidor.model.aluno_util.aluno_interface import AlunoInterface
 from Servidor.model.sql_connect.sql import sql_execute
 
@@ -13,9 +13,17 @@ class AlunoController(AlunoInterface):
 
         aluno = Aluno(matricula, nome, idade, periodo)
 
-        params = {"matricula": aluno.matricula, "nome": aluno.nome, "idade": aluno.idade, "periodo": aluno.periodo}
+        params = {
+            "matricula": aluno.matricula,
+            "nome": aluno.nome,
+            "idade": aluno.idade,
+            "periodo": aluno.periodo,
+        }
 
-        sql_str = "INSERT INTO aluno (matricula, nome, idade, periodo) VALUES (%(matricula)s, %(nome)s, %(idade)s, %(periodo)s)"
+        sql_str = (
+            "INSERT INTO aluno (matricula, nome, idade, periodo) VALUES (%(matricula)s, %(nome)s, %(idade)s, "
+            "%(periodo)s)"
+        )
         sql_execute(op, sql_str, params, fetch=False)
 
         return True
@@ -33,11 +41,17 @@ class AlunoController(AlunoInterface):
 
         return alunos
 
-    def editar(self, matricula: int, nome: str = None, idade: int = None, periodo: int = None) -> \
-            bool:
+    def editar(
+        self, matricula: int, nome: str = None, idade: int = None, periodo: int = None
+    ) -> bool:
         op = "Edit"
 
-        novo = {"matricula": matricula, "nome": nome, "idade": idade, "periodo": periodo}
+        novo = {
+            "matricula": matricula,
+            "nome": nome,
+            "idade": idade,
+            "periodo": periodo,
+        }
 
         # Pega os valores atuais do aluno
         print(f"Pegando valores da matricula: {matricula}")
@@ -50,10 +64,12 @@ class AlunoController(AlunoInterface):
 
         params = aluno
 
-        sql_str = ("UPDATE aluno SET nome = %(nome)s, idade = %(idade)s, periodo = %(periodo)s "
-                   "WHERE "
-                   "matricula "
-                   "= %(matricula)s")
+        sql_str = (
+            "UPDATE aluno SET nome = %(nome)s, idade = %(idade)s, periodo = %(periodo)s "
+            "WHERE "
+            "matricula "
+            "= %(matricula)s"
+        )
         sql_execute(op, sql_str, params, fetch=False)
 
         return True
@@ -69,7 +85,3 @@ class AlunoController(AlunoInterface):
         sql_execute(op, sql_str, params, fetch=False)
 
         return True
-
-
-
-
