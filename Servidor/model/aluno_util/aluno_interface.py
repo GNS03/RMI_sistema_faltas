@@ -1,7 +1,5 @@
 from abc import abstractmethod
 
-from Servidor.model import Aluno
-
 
 class AlunoInterface:
 
@@ -10,7 +8,7 @@ class AlunoInterface:
         raise NotImplementedError
 
     @abstractmethod
-    def pesquisar(self, matricula: int) -> Aluno:
+    def pesquisar(self, matricula: int) -> list[dict]:
         raise NotImplementedError
 
     @abstractmethod
