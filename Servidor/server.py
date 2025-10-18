@@ -6,6 +6,8 @@ import Pyro5.socketutil
 
 from Servidor.model.aluno_util.aluno_controller import AlunoController
 from Servidor.model.avaliacao_util.avaliacao_controller import AvaliacaoController
+from Servidor.model.disciplina_util.disciplina_controller import DisciplinaController
+from Servidor.model.professor_util.professor_controller import ProfessorController
 from model import *
 
 # import sys
@@ -35,8 +37,8 @@ if __name__ == "__main__":
     # Expose classes to Pyro5
     aluno_exp = Pyro5.api.expose(AlunoController)
     avaliacao_exp = Pyro5.api.expose(AvaliacaoController)
-    disciplina_exp = Pyro5.api.expose(Disciplina)
-    frequencia_exp = Pyro5.api.expose(Frequencia)
+    disciplina_exp = Pyro5.api.expose(DisciplinaController)
+    professor_exp = Pyro5.api.expose(ProfessorController)
 
     # Starting RMI server
 
@@ -44,8 +46,8 @@ if __name__ == "__main__":
         {
             aluno_exp: "AlunoController",
             avaliacao_exp: "AvaliacaoController",
-            disciplina_exp: "Disciplina",
-            frequencia_exp: "Frequencia",
+            disciplina_exp: "DisciplinaController",
+            professor_exp: "ProfessorController",
         },
         host=my_ip,
         port=9090,
