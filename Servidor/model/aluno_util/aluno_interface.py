@@ -4,6 +4,10 @@ from abc import abstractmethod
 class AlunoInterface:
 
     @abstractmethod
+    def select(self):
+        raise NotImplementedError
+
+    @abstractmethod
     def inserir(self, matricula: int, nome: str, idade: int, periodo: int):
         raise NotImplementedError
 
