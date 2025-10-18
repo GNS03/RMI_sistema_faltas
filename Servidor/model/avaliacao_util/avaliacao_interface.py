@@ -4,7 +4,11 @@ from abc import abstractmethod
 class AvaliacaoInterface:
 
     @abstractmethod
-    def inserir(self, id: int, disciplina_k: int, aluno_k: int):
+    def select(self):
+        raise NotImplementedError
+
+    @abstractmethod
+    def inserir(self, id: int, disciplina_fk: int, aluno_fk: int, nota: float):
         raise NotImplementedError
 
     @abstractmethod
@@ -12,7 +16,7 @@ class AvaliacaoInterface:
         raise NotImplementedError
 
     @abstractmethod
-    def editar(self, id: int, disciplina_k: int, aluno_k: int):
+    def editar(self, id: int, disciplina_fk: int, aluno_fk: int, nota: float):
         raise NotImplementedError
 
     @abstractmethod
