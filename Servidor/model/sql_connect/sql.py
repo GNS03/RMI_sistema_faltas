@@ -10,7 +10,7 @@ def sql_execute(op: str, sql_command: str, params: dict = {}, fetch: bool = Fals
 
     # Usa o cursor para mandar comandos, nao e bom usar f-strings
 
-    if op and op != "Select":
+    if op:
         print(f"Operation: {op}")
 
     try:
