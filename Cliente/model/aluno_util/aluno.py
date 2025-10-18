@@ -13,3 +13,12 @@ class Aluno:
 
     def hello(self):
         print(f"Hello {self.nome}")
+
+    def to_dict(self):
+        return {
+            "matricula": self.matricula,
+            "nome": self.nome,
+            "idade": self.idade,
+            "periodo": self.periodo,
+            # "disciplinas_matriculadas": self.disciplinas_matriculadas,
+        }
