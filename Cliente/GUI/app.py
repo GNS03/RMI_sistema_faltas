@@ -10,7 +10,7 @@ from PyQt6.QtWidgets import QApplication, QLabel, QLineEdit, QMainWindow, QSizeP
 import sys
 
 ## Custom functions
-from client_functions import aluno
+from client_functions import aluno, avaliacao, disciplina, professor
 
 
 
@@ -64,16 +64,23 @@ class MyApp(QMainWindow):
         # Fetch fresh data from server
         if table_name == "Alunos":
             data = aluno.select()
+        elif table_name == "Disciplinas":
+            data = disciplina.select()
+        elif table_name == "Avaliações":
+            data = avaliacao.select()
+        elif table_name == "Professores":
+            data = professor.select()
         else:
-            data = []  # handle other tables
+            data = []
 
         # print(data)
 
         # Return empty
         if not data:
-            print(f"Couldn't load table {table_name}")
+            print(f"Couldn't load table {table_name} or table is empty")
             self.tableWidget.setRowCount(0)
             self.tableWidget.setColumnCount(0)
+
             return
 
         # Set number of rows, columns and headers
@@ -129,11 +136,11 @@ class MyApp(QMainWindow):
             self.fields[col] = line_edit
 
         # Connect update button safely
-        try:
-            self.update_button.clicked.disconnect()
-        except TypeError:
-            pass
-        self.update_button.clicked.connect(self.update_row)
+        # try:
+        #     self.update_button.clicked.disconnect()
+        # except TypeError:
+        #     pass
+        # self.update_button.clicked.connect(self.update_row)
 
 
     def populate_fields_from_row(self, item):
@@ -173,7 +180,24 @@ class MyApp(QMainWindow):
 
         print("Adding row with data:", new_row_data)
 
-        aluno.inserir(**new_row_data)
+        # Get currently selected table name
+        current_item = self.listWidget.currentItem()
+        if not current_item:
+            print("No table selected.")
+            return
+
+        table_name = current_item.text()
+
+        if table_name == "Alunos":
+            aluno.inserir(**new_row_data)
+        elif table_name == "Disciplinas":
+            disciplina.inserir(**new_row_data)
+        elif table_name == "Avaliações":
+            avaliacao.inserir(**new_row_data)
+        elif table_name == "Professores":
+            professor.inserir(**new_row_data)
+        else:
+            pass
 
         self.refresh_current_table()
 
@@ -192,7 +216,24 @@ class MyApp(QMainWindow):
 
         print("Updating row with data:", new_row_data)
 
-        aluno.editar(**new_row_data)
+        # Get currently selected table name
+        current_item = self.listWidget.currentItem()
+        if not current_item:
+            print("No table selected.")
+            return
+
+        table_name = current_item.text()
+
+        if table_name == "Alunos":
+            aluno.editar(**new_row_data)
+        elif table_name == "Disciplinas":
+            disciplina.editar(**new_row_data)
+        elif table_name == "Avaliações":
+            avaliacao.editar(**new_row_data)
+        elif table_name == "Professores":
+            professor.editar(**new_row_data)
+        else:
+            pass
 
         self.refresh_current_table()
 
@@ -210,7 +251,24 @@ class MyApp(QMainWindow):
 
         print("Deleting row with data:", new_row_data)
 
-        aluno.remover(**new_row_data)
+        # Get currently selected table name
+        current_item = self.listWidget.currentItem()
+        if not current_item:
+            print("No table selected.")
+            return
+
+        table_name = current_item.text()
+
+        if table_name == "Alunos":
+            aluno.remover(**new_row_data)
+        elif table_name == "Disciplinas":
+            disciplina.remover(**new_row_data)
+        elif table_name == "Avaliações":
+            avaliacao.remover(**new_row_data)
+        elif table_name == "Professores":
+            professor.remover(**new_row_data)
+        else:
+            pass
 
         self.refresh_current_table()
 
