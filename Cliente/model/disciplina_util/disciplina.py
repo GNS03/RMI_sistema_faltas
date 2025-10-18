@@ -5,3 +5,10 @@ class Disciplina:
         self.id = id
         self.nome = nome
         self.horas = horas
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "nome": self.nome,
+            "horas": self.horas,
+        }
