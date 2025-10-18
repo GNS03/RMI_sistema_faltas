@@ -84,9 +84,7 @@ class AlunoController(AlunoInterface):
     def remover(self, matricula: int, nome: str = None, idade: int = None, periodo: int = None) -> bool | list[dict]:
         op = "Delete"
 
-        aluno = Aluno(matricula)
-
-        params = {"matricula": aluno.matricula}
+        params = {"matricula": matricula}
 
         sql_str = "DELETE FROM aluno WHERE matricula = %(matricula)s"
 
