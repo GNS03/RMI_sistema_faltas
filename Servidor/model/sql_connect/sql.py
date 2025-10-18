@@ -1,42 +1,52 @@
 import mysql.connector
 from mysql.connector import MySQLConnection, errorcode
 
-def sql_execute(op: str, sql_command: str, params: dict, fetch: bool = False) -> bool | list[dict]:
+
+def sql_execute(op: str, sql_command: str, params: dict = {}, fetch: bool = False) -> bool | list[dict]:
 
     # Conectar com o banco de dados
     cnx = SQLConnection()
     cursor = cnx.mysql_db.cursor()
 
     # Usa o cursor para mandar comandos, nao e bom usar f-strings
+
+    if op and op != "Select":
+        print(f"Operation: {op}")
+
     try:
         cursor.execute(sql_command, params)
         # clear_screen.clear_console()
-
-        print(f"Operation: {op}")
 
         # Se for pesquisa, devolve o resultado como uma lista de alunos
         if fetch:
             rows = cursor.fetchall()
             alunos: list[dict] = []
-            for (matricula, nome, idade, periodo) in rows:
-                print(f"Found: {matricula}, {nome}, {idade}, {periodo}")
-                aluno = {"matricula": matricula, "nome": nome, "idade": idade, "periodo": periodo}
+
+            # Get column names dynamically
+            column_names = [desc[0] for desc in cursor.description]
+
+            for row in rows:
+                aluno = dict(zip(column_names, row))
                 alunos.append(aluno)
+
+                # print(f"Found: {aluno}")
+
             return alunos
 
         # Se nao for pesquisa salva as mudancas com o commit, retorna True
         else:
             cnx.mysql_db.commit()
-            print("SQL executed successfully.")
+            print(" SQL executed successfully.")
             return True
 
     # Se falhar retorna False e imprime o erro no servidor
     except mysql.connector.Error as err:
-        print(f"Failed executing SQL command: {err}")
+        print(f"    Failed executing SQL command: {err}")
         return False
     finally:
         cursor.close()
         cnx.disconnect()
+
 
 class SQLConnection:
 
@@ -51,11 +61,11 @@ class SQLConnection:
     def connect(self) -> MySQLConnection:
         try:
             db = mysql.connector.connect(
-                host=self.host,
-                user=self.user,
-                password=self.password,
-                database = self.database
-            )
+                host = self.host,
+                user = self.user,
+                password = self.password,
+                database = self.database,
+                )
 
             if db:
                 # print("Database connected succesfully")
@@ -77,3 +87,7 @@ class SQLConnection:
     def disconnect(self):
         self.mysql_db.close()
         # print("Database connection closed")
+
+
+if __name__ == "__main__":
+    print(sql_execute(op = "Select all", sql_command = "SELECT * FROM aluno", fetch = True))
