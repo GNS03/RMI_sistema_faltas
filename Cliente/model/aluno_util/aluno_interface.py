@@ -6,6 +6,10 @@ from Cliente.model import Aluno
 class AlunoInterface:
 
     @abstractmethod
+    def select(self):
+        raise NotImplementedError
+
+    @abstractmethod
     def inserir(self, aluno: Aluno):
         raise NotImplementedError
 
