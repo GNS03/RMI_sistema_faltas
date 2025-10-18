@@ -1,13 +1,15 @@
 class Avaliacao:
-    def __init__(self, id: int, disciplina_k: int, aluno_k: int):
+    def __init__(self, id: int, disciplina_fk: int, aluno_fk: int, nota: float):
 
         self.id = id
-        self.disciplina_k = disciplina_k
-        self.aluno_k = aluno_k
+        self.disciplina_fk = disciplina_fk
+        self.aluno_fk = aluno_fk
+        self.nota = nota
 
     def to_dict(self):
         return {
             "id": self.id,
-            "disciplina_k": self.disciplina_k,
-            "aluno_k": self.aluno_k,
+            "disciplina_fk": self.disciplina_fk,
+            "aluno_fk": self.aluno_fk,
+            "nota": self.nota
         }
