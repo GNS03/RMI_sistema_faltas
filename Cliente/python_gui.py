@@ -1,10 +1,20 @@
 import socket
 import sys
 
-import Pyro5.socketutil
+import dotenv
 from PyQt6.QtWidgets import QApplication
 
-from Cliente.GUI.app import MyApp
+from GUI.app import MyApp
+
+
+def get_server_ip():
+    default_ip = dotenv.get_key(".env", "IP")  # IP fixo do servidor
+    op = input(f"Digite o IP do servidor ou Enter para usar {default_ip}: ")
+
+    return op or default_ip
+
+
+dotenv.set_key(".env", "IP", get_server_ip())
 
 if __name__ == "__main__":
 
@@ -14,17 +24,11 @@ if __name__ == "__main__":
 
     # Utils
     hostname = socket.gethostname()
-    my_ip = Pyro5.socketutil.get_ip_address(hostname, workaround127=True, version=4)
+    my_ip = dotenv.get_key(".env", "IP")
     port = 9090
 
-    # classe = "..." # TODO: Add depending on which table is selected in view(1)
-    #
-    # uri = f"PYRO:{classe}@{my_ip}:{port}"
-    #
-    # try:
-    #     control = Pyro5.api.Proxy(uri)
-    # except Exception as e:
-    #     raise e
+    # print(f"Ip found: {my_ip}")
+    # op = input("Type a new Ip to change it or press enter to continue...\n")
 
     print(f"Found pyro server at: Hostname = {hostname}, IP = {my_ip}, Port = {port}")
 
