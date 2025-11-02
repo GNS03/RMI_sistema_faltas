@@ -1,6 +1,6 @@
-from Servidor.model import Professor
-from Servidor.model.professor_util.professor_interface import ProfessorInterface
-from Servidor.model.sql_connect import sql_execute
+from .. import Professor
+from ..professor_util.professor_interface import ProfessorInterface
+from ..sql_connect import sql_execute
 
 
 class ProfessorController(ProfessorInterface):
@@ -13,7 +13,7 @@ class ProfessorController(ProfessorInterface):
 
         sql_str = "SELECT * FROM professor"  # no params needed
 
-        professores = sql_execute(op, sql_str, fetch = True)
+        professores = sql_execute(op, sql_str, fetch=True)
 
         return professores
 
@@ -23,13 +23,13 @@ class ProfessorController(ProfessorInterface):
         professor = Professor(id, nome)
 
         params = {
-            "id":    professor.id,
-            "nome":  professor.nome,
-            }
+            "id": professor.id,
+            "nome": professor.nome,
+        }
 
         sql_str = "INSERT INTO professor (id, nome) VALUES (%(id)s, %(nome)s)"
 
-        return sql_execute(op, sql_str, params, fetch = False)
+        return sql_execute(op, sql_str, params, fetch=False)
 
     def pesquisar(self, id: int) -> list[dict]:
         op = "Search"
@@ -37,7 +37,7 @@ class ProfessorController(ProfessorInterface):
         params = {"id": id}
 
         sql_str = "SELECT id, nome FROM professor WHERE id = %(id)s"
-        professores = sql_execute(op, sql_str, params, fetch = True)
+        professores = sql_execute(op, sql_str, params, fetch=True)
 
         return professores
 
@@ -45,9 +45,9 @@ class ProfessorController(ProfessorInterface):
         op = "Edit"
 
         novo = {
-            "id":    id,
-            "nome":  nome,
-            }
+            "id": id,
+            "nome": nome,
+        }
 
         # Pega os valores atuais da professor
         print(f"Pegando valores da id: {id}")
@@ -62,7 +62,7 @@ class ProfessorController(ProfessorInterface):
 
         sql_str = "UPDATE professor SET nome = %(nome)s WHERE id = %(id)s"
 
-        return sql_execute(op, sql_str, params, fetch = False)
+        return sql_execute(op, sql_str, params, fetch=False)
 
     def remover(self, id: int):
         op = "Delete"
@@ -71,7 +71,7 @@ class ProfessorController(ProfessorInterface):
 
         sql_str = "DELETE FROM professor WHERE id = %(id)s"
 
-        return sql_execute(op, sql_str, params, fetch = False)
+        return sql_execute(op, sql_str, params, fetch=False)
 
 
 if __name__ == "__main__":
