@@ -1,10 +1,13 @@
 import socket
 
-import Pyro5.socketutil, Pyro5.api
+import Pyro5.api
+import Pyro5.socketutil
+import dotenv
+
 
 # Utils
 hostname = socket.gethostname()
-my_ip = Pyro5.socketutil.get_ip_address(hostname, workaround127 = True, version = 4)
+my_ip = dotenv.dotenv_values(".env").get("IP")
 port = 9090
 print(f"Hostname = {hostname}, IP = {my_ip}, Port = {port}")
 
@@ -17,6 +20,7 @@ try:
 except Exception as e:
     raise e
 
+
 def select():
     # print("Getting data from server, table: avaliacaos")
 
@@ -27,12 +31,14 @@ def select():
     else:
         print("ERROR: An error ocurred check the server for details")
 
+
 def inserir(id: int, disciplina_fk: int, aluno_fk: int, nota: float):
 
     if avaliacao_control.inserir(id, disciplina_fk, aluno_fk, nota):
         print("SQL executed successfully.")
     else:
         print("ERROR: An error ocurred check the server for details")
+
 
 def pesquisar(id: int):
     avaliacoes = avaliacao_control.pesquisar(id)
@@ -42,11 +48,13 @@ def pesquisar(id: int):
     else:
         print("Did not find that key")
 
+
 def editar(id: int, disciplina_fk: int, aluno_fk: int, nota: float):
     if avaliacao_control.editar(id, disciplina_fk, aluno_fk, nota):
         print("SQL executed successfully.")
     else:
         print("ERROR: An error ocurred check the server for details")
+
 
 def remover(id: int, disciplina_fk: int, aluno_fk: int, nota: float):
     if avaliacao_control.remover(id):
@@ -54,6 +62,7 @@ def remover(id: int, disciplina_fk: int, aluno_fk: int, nota: float):
     else:
         print("Did not find that key")
 
+
 if __name__ == "__main__":
 
-   print(select())
+    print(select())
