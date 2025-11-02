@@ -1,6 +1,6 @@
-from Servidor.model import Aluno  # , clear_screen
-from Servidor.model.aluno_util.aluno_interface import AlunoInterface
-from Servidor.model.sql_connect.sql import sql_execute
+from .. import Aluno  # , clear_screen
+from ..aluno_util.aluno_interface import AlunoInterface
+from ..sql_connect.sql import sql_execute
 
 
 class AlunoController(AlunoInterface):
@@ -13,28 +13,30 @@ class AlunoController(AlunoInterface):
 
         sql_str = "SELECT * FROM aluno"  # no params needed
 
-        alunos = sql_execute(op, sql_str, fetch = True)
+        alunos = sql_execute(op, sql_str, fetch=True)
 
         return alunos
 
-    def inserir(self, matricula: int, nome: str, idade: int, periodo: int) -> bool | list[dict]:
+    def inserir(
+        self, matricula: int, nome: str, idade: int, periodo: int
+    ) -> bool | list[dict]:
         op = "Insert"
 
         aluno = Aluno(matricula, nome, idade, periodo)
 
         params = {
             "matricula": aluno.matricula,
-            "nome":      aluno.nome,
-            "idade":     aluno.idade,
-            "periodo":   aluno.periodo,
-            }
+            "nome": aluno.nome,
+            "idade": aluno.idade,
+            "periodo": aluno.periodo,
+        }
 
         sql_str = (
             "INSERT INTO aluno (matricula, nome, idade, periodo) VALUES (%(matricula)s, %(nome)s, %(idade)s, "
             "%(periodo)s)"
         )
 
-        return sql_execute(op, sql_str, params, fetch = False)
+        return sql_execute(op, sql_str, params, fetch=False)
 
     # Nao e serializavel, ent tem q usar dict
     def pesquisar(self, matricula: int) -> None | list[dict]:
@@ -45,21 +47,25 @@ class AlunoController(AlunoInterface):
         params = {"matricula": matricula}
 
         sql_str = "SELECT matricula, nome, idade, periodo FROM aluno WHERE matricula = %(matricula)s"
-        alunos = sql_execute(op, sql_str, params, fetch = True)
+        alunos = sql_execute(op, sql_str, params, fetch=True)
 
         return alunos
 
     def editar(
-            self, matricula: int, nome: str = None, idade: int = None, periodo: int = None,
-            ) -> bool | list[dict]:
+        self,
+        matricula: int,
+        nome: str = None,
+        idade: int = None,
+        periodo: int = None,
+    ) -> bool | list[dict]:
         op = "Edit"
 
         novo = {
             "matricula": matricula,
-            "nome":      nome,
-            "idade":     idade,
-            "periodo":   periodo,
-            }
+            "nome": nome,
+            "idade": idade,
+            "periodo": periodo,
+        }
 
         # Pega os valores atuais do aluno
         print(f"Pegando valores da matricula: {matricula}")
@@ -79,16 +85,18 @@ class AlunoController(AlunoInterface):
             "= %(matricula)s"
         )
 
-        return sql_execute(op, sql_str, params, fetch = False)
+        return sql_execute(op, sql_str, params, fetch=False)
 
-    def remover(self, matricula: int, nome: str = None, idade: int = None, periodo: int = None) -> bool | list[dict]:
+    def remover(
+        self, matricula: int, nome: str = None, idade: int = None, periodo: int = None
+    ) -> bool | list[dict]:
         op = "Delete"
 
         params = {"matricula": matricula}
 
         sql_str = "DELETE FROM aluno WHERE matricula = %(matricula)s"
 
-        return sql_execute(op, sql_str, params, fetch = False)
+        return sql_execute(op, sql_str, params, fetch=False)
 
 
 if __name__ == "__main__":
