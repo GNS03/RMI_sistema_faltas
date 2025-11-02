@@ -1,6 +1,6 @@
 from abc import abstractmethod
 
-from Cliente.model import Aluno
+from .. import Aluno
 
 
 class AlunoInterface:
