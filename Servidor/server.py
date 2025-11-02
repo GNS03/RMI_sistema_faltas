@@ -4,16 +4,29 @@ import socket
 import Pyro5.api
 import Pyro5.socketutil
 
-from Servidor.model.aluno_util.aluno_controller import AlunoController
-from Servidor.model.avaliacao_util.avaliacao_controller import AvaliacaoController
-from Servidor.model.disciplina_util.disciplina_controller import DisciplinaController
-from Servidor.model.professor_util.professor_controller import ProfessorController
-from model import *
+from model.aluno_util.aluno_controller import AlunoController
+from model.avaliacao_util.avaliacao_controller import AvaliacaoController
+from model.disciplina_util.disciplina_controller import DisciplinaController
+from model.professor_util.professor_controller import ProfessorController
+
 
 # import sys
 # import os
 #
 # sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+
+
+def get_local_ip():
+    try:
+        # cria um socket UDP “para fora” (não envia dados de fato)
+        s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        s.connect(("8.8.8.8", 80))  # Google DNS só para descobrir a interface
+        ip = s.getsockname()[0]
+        s.close()
+        return ip
+    except Exception:
+        return "127.0.0.1"
+
 
 if __name__ == "__main__":
 
@@ -49,7 +62,7 @@ if __name__ == "__main__":
             disciplina_exp: "DisciplinaController",
             professor_exp: "ProfessorController",
         },
-        host=my_ip,
+        host=get_local_ip(),
         port=9090,
         use_ns=False,
     )
