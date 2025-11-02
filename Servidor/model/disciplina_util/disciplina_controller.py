@@ -1,6 +1,6 @@
-from Servidor.model import Disciplina
-from Servidor.model.disciplina_util.disciplina_interface import DisciplinaInterface
-from Servidor.model.sql_connect import sql_execute
+from .. import Disciplina
+from ..disciplina_util.disciplina_interface import DisciplinaInterface
+from ..sql_connect import sql_execute
 
 
 class DisciplinaController(DisciplinaInterface):
@@ -13,7 +13,7 @@ class DisciplinaController(DisciplinaInterface):
 
         sql_str = "SELECT * FROM disciplina"  # no params needed
 
-        disciplinas = sql_execute(op, sql_str, fetch = True)
+        disciplinas = sql_execute(op, sql_str, fetch=True)
 
         return disciplinas
 
@@ -23,14 +23,14 @@ class DisciplinaController(DisciplinaInterface):
         disciplina = Disciplina(id, nome, horas)
 
         params = {
-            "id":    disciplina.id,
-            "nome":  disciplina.nome,
+            "id": disciplina.id,
+            "nome": disciplina.nome,
             "horas": disciplina.horas,
-            }
+        }
 
         sql_str = "INSERT INTO disciplina (id, nome, horas) VALUES (%(id)s, %(nome)s, %(horas)s)"
 
-        return sql_execute(op, sql_str, params, fetch = False)
+        return sql_execute(op, sql_str, params, fetch=False)
 
     def pesquisar(self, id: int) -> list[dict]:
         op = "Search"
@@ -38,7 +38,7 @@ class DisciplinaController(DisciplinaInterface):
         params = {"id": id}
 
         sql_str = "SELECT id, nome, horas FROM disciplina WHERE id = %(id)s"
-        disciplinas = sql_execute(op, sql_str, params, fetch = True)
+        disciplinas = sql_execute(op, sql_str, params, fetch=True)
 
         return disciplinas
 
@@ -46,10 +46,10 @@ class DisciplinaController(DisciplinaInterface):
         op = "Edit"
 
         novo = {
-            "id":    id,
-            "nome":  nome,
+            "id": id,
+            "nome": nome,
             "horas": horas,
-            }
+        }
 
         # Pega os valores atuais da disciplina
         print(f"Pegando valores da id: {id}")
@@ -62,9 +62,11 @@ class DisciplinaController(DisciplinaInterface):
 
         params = disciplina
 
-        sql_str = "UPDATE disciplina SET nome = %(nome)s, horas = %(horas)s WHERE id = %(id)s"
+        sql_str = (
+            "UPDATE disciplina SET nome = %(nome)s, horas = %(horas)s WHERE id = %(id)s"
+        )
 
-        return sql_execute(op, sql_str, params, fetch = False)
+        return sql_execute(op, sql_str, params, fetch=False)
 
     def remover(self, id: int):
         op = "Delete"
@@ -73,7 +75,7 @@ class DisciplinaController(DisciplinaInterface):
 
         sql_str = "DELETE FROM disciplina WHERE id = %(id)s"
 
-        return sql_execute(op, sql_str, params, fetch = False)
+        return sql_execute(op, sql_str, params, fetch=False)
 
 
 if __name__ == "__main__":
