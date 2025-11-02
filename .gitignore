@@ -7,3 +7,4 @@
 *.pyc
 .idea/workspace.xml
 /.idea
+/output
