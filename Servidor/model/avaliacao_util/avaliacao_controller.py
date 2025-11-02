@@ -1,6 +1,6 @@
-from Servidor.model import Avaliacao
-from Servidor.model.avaliacao_util.avaliacao_interface import AvaliacaoInterface
-from Servidor.model.sql_connect import sql_execute
+from .. import Avaliacao
+from ..avaliacao_util.avaliacao_interface import AvaliacaoInterface
+from ..sql_connect import sql_execute
 
 
 class AvaliacaoController(AvaliacaoInterface):
@@ -13,7 +13,7 @@ class AvaliacaoController(AvaliacaoInterface):
 
         sql_str = "SELECT * FROM avaliacao"  # no params needed
 
-        avaliacoes = sql_execute(op, sql_str, fetch = True)
+        avaliacoes = sql_execute(op, sql_str, fetch=True)
 
         return avaliacoes
 
@@ -23,24 +23,28 @@ class AvaliacaoController(AvaliacaoInterface):
         avaliacao = Avaliacao(id, disciplina_fk, aluno_fk, nota)
 
         params = {
-            "id":            avaliacao.id,
+            "id": avaliacao.id,
             "disciplina_fk": avaliacao.disciplina_fk,
-            "aluno_fk":      avaliacao.aluno_fk,
-            "nota":          avaliacao.nota
-            }
+            "aluno_fk": avaliacao.aluno_fk,
+            "nota": avaliacao.nota,
+        }
 
-        sql_str = ("INSERT INTO avaliacao (id, disciplina_fk, aluno_fk, nota) VALUES (%(id)s, %(disciplina_fk)s, "
-                   "%(aluno_fk)s, %(nota)s)")
+        sql_str = (
+            "INSERT INTO avaliacao (id, disciplina_fk, aluno_fk, nota) VALUES (%(id)s, %(disciplina_fk)s, "
+            "%(aluno_fk)s, %(nota)s)"
+        )
 
-        return sql_execute(op, sql_str, params, fetch = False)
+        return sql_execute(op, sql_str, params, fetch=False)
 
     def pesquisar(self, id: int) -> list[dict]:
         op = "Search"
 
         params = {"id": id}
 
-        sql_str = "SELECT id, disciplina_fk, aluno_fk, nota FROM avaliacao WHERE id = %(id)s"
-        avaliacoes = sql_execute(op, sql_str, params, fetch = True)
+        sql_str = (
+            "SELECT id, disciplina_fk, aluno_fk, nota FROM avaliacao WHERE id = %(id)s"
+        )
+        avaliacoes = sql_execute(op, sql_str, params, fetch=True)
 
         return avaliacoes
 
@@ -48,11 +52,11 @@ class AvaliacaoController(AvaliacaoInterface):
         op = "Edit"
 
         novo = {
-            "id":            id,
+            "id": id,
             "disciplina_fk": disciplina_fk,
-            "aluno_fk":      aluno_fk,
-            "nota":          nota
-            }
+            "aluno_fk": aluno_fk,
+            "nota": nota,
+        }
 
         # Pega os valores atuais da avaliacao
         print(f"Pegando valores da id: {id}")
@@ -65,10 +69,12 @@ class AvaliacaoController(AvaliacaoInterface):
 
         params = avaliacao
 
-        sql_str = ("UPDATE avaliacao SET disciplina_fk = %(disciplina_fk)s, aluno_fk = %(aluno_fk)s, nota = %(nota)s "
-                   "WHERE id = %(id)s")
+        sql_str = (
+            "UPDATE avaliacao SET disciplina_fk = %(disciplina_fk)s, aluno_fk = %(aluno_fk)s, nota = %(nota)s "
+            "WHERE id = %(id)s"
+        )
 
-        return sql_execute(op, sql_str, params, fetch = False)
+        return sql_execute(op, sql_str, params, fetch=False)
 
     def remover(self, id: int):
         op = "Delete"
@@ -77,7 +83,7 @@ class AvaliacaoController(AvaliacaoInterface):
 
         sql_str = "DELETE FROM avaliacao WHERE id = %(id)s"
 
-        return sql_execute(op, sql_str, params, fetch = False)
+        return sql_execute(op, sql_str, params, fetch=False)
 
 
 if __name__ == "__main__":
