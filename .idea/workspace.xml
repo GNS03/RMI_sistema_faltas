@@ -5,9 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="37f8294a-2b4b-44af-9857-5ffbd29470a5" name="Changes" comment="Create avaliacao_interface and avaliacao_controller.py based on the AlunoController">
-      <change beforePath="$PROJECT_DIR$/.idea/RMI_sistema_faltas.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/RMI_sistema_faltas.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cliente/GUI/UI/new_app.ui" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/GUI/UI/new_app.ui" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cliente/GUI/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/GUI/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cliente/client_functions/aluno.py" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/client_functions/aluno.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cliente/client_functions/avaliacao.py" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/client_functions/avaliacao.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cliente/client_functions/disciplina.py" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/client_functions/disciplina.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cliente/client_functions/professor.py" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/client_functions/professor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cliente/model/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/model/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cliente/model/aluno_util/aluno_interface.py" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/model/aluno_util/aluno_interface.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cliente/python_gui.py" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/python_gui.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Servidor/model/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/Servidor/model/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Servidor/model/aluno_util/aluno_controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/Servidor/model/aluno_util/aluno_controller.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Servidor/model/avaliacao_util/avaliacao_controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/Servidor/model/avaliacao_util/avaliacao_controller.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Servidor/model/disciplina_util/disciplina_controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/Servidor/model/disciplina_util/disciplina_controller.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Servidor/model/professor_util/professor_controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/Servidor/model/professor_util/professor_controller.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Servidor/server.py" beforeDir="false" afterPath="$PROJECT_DIR$/Servidor/server.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,34 +59,36 @@
     <option name="showMembers" value="true" />
     <option name="showScratchesAndConsoles" value="false" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Notification.DisplayName-DoNotAsk-Black action on save file ignored": "Black action on save file ignored",
-    "Notification.DoNotAsk-Black action on save file ignored": "true",
-    "Python.client.executor": "Run",
-    "Python.server.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "C:/Users/Gabri/PycharmProjects/RMI_sistema_faltas",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.standard": "true",
-    "node.js.detected.package.stylelint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.standard": "",
-    "node.js.selected.package.stylelint": "",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.externalTools",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Notification.DisplayName-DoNotAsk-Black action on save file ignored&quot;: &quot;Black action on save file ignored&quot;,
+    &quot;Notification.DoNotAsk-Black action on save file ignored&quot;: &quot;true&quot;,
+    &quot;Python.client.executor&quot;: &quot;Run&quot;,
+    &quot;Python.python_gui.executor&quot;: &quot;Run&quot;,
+    &quot;Python.server.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Gabri/PycharmProjects/RMI_sistema_faltas&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.stylelint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.stylelint&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.externalTools&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/Servidor/model" />
@@ -88,7 +103,7 @@
       <recent name="$PROJECT_DIR$/Servidor" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.client">
+  <component name="RunManager" selected="Python.server">
     <configuration name="client" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="RMI_sistema_faltas" />
       <option name="ENV_FILES" value="" />
@@ -105,6 +120,30 @@
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="RUN_TOOL" value="" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Cliente/client.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="python_gui" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="RMI_sistema_faltas" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Cliente" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="RUN_TOOL" value="" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Cliente/python_gui.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -138,12 +177,14 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Python.python_gui" />
       <item itemvalue="Python.client" />
       <item itemvalue="Python.server" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.server" />
+        <item itemvalue="Python.python_gui" />
         <item itemvalue="Python.client" />
       </list>
     </recent_temporary>
@@ -151,8 +192,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-75c7c973e13d-JavaScript-PY-253.27642.35" />
-        <option value="bundled-python-sdk-8ea801f113e6-30684d0e00d4-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-253.27642.35" />
+        <option value="bundled-js-predefined-d6986cc7102b-75c7c973e13d-JavaScript-PY-253.27864.50" />
+        <option value="bundled-python-sdk-a9a34e35382e-30684d0e00d4-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-253.27864.50" />
       </set>
     </attachedChunks>
   </component>
@@ -171,6 +212,8 @@
       <workItem from="1760563579281" duration="20000" />
       <workItem from="1760576756715" duration="1366000" />
       <workItem from="1760729135086" duration="86000" />
+      <workItem from="1761862453250" duration="7059000" />
+      <workItem from="1761879647652" duration="10000" />
     </task>
     <task id="LOCAL-00001" summary="update code style">
       <option name="closed" value="true" />
@@ -248,6 +291,7 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/RMI_sistema_faltas$client.coverage" NAME="client Coverage Results" MODIFIED="1760397355539" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Cliente" />
-    <SUITE FILE_PATH="coverage/RMI_sistema_faltas$server.coverage" NAME="server Coverage Results" MODIFIED="1760397353544" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Servidor" />
+    <SUITE FILE_PATH="coverage/RMI_sistema_faltas$server.coverage" NAME="server Coverage Results" MODIFIED="1761868252390" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Servidor" />
+    <SUITE FILE_PATH="coverage/RMI_sistema_faltas$python_gui.coverage" NAME="python_gui Coverage Results" MODIFIED="1761867856202" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Cliente" />
   </component>
 </project>
