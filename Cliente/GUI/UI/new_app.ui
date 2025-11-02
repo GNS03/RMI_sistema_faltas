@@ -274,44 +274,21 @@
            <string>Delete</string>
           </property>
          </widget>
-         <widget class="QLineEdit" name="content_search_field">
-          <property name="geometry">
-           <rect>
-            <x>10</x>
-            <y>10</y>
-            <width>191</width>
-            <height>22</height>
-           </rect>
-          </property>
-         </widget>
          <widget class="QWidget" name="verticalLayoutWidget_2">
           <property name="geometry">
            <rect>
             <x>10</x>
-            <y>40</y>
+            <y>20</y>
             <width>271</width>
-            <height>191</height>
+            <height>211</height>
            </rect>
           </property>
           <layout class="QVBoxLayout" name="vertical_fields"/>
          </widget>
-         <widget class="QPushButton" name="search_button">
-          <property name="geometry">
-           <rect>
-            <x>210</x>
-            <y>10</y>
-            <width>51</width>
-            <height>24</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>Search</string>
-          </property>
-         </widget>
          <widget class="QPushButton" name="add_button">
           <property name="geometry">
            <rect>
-            <x>120</x>
+            <x>110</x>
             <y>250</y>
             <width>75</width>
             <height>24</height>
@@ -337,7 +314,6 @@
   <tabstop>tableWidget</tabstop>
   <tabstop>update_button</tabstop>
   <tabstop>delete_button</tabstop>
-  <tabstop>content_search_field</tabstop>
  </tabstops>
  <resources/>
  <connections/>

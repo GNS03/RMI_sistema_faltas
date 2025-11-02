@@ -5,13 +5,19 @@ from PyQt6.QtCore import Qt
 warnings.filterwarnings("ignore", category=DeprecationWarning)
 
 from PyQt6 import uic
-from PyQt6.QtWidgets import QApplication, QLabel, QLineEdit, QMainWindow, QSizePolicy, QSpacerItem, QTableWidgetItem, \
-    QVBoxLayout, QWidget
+from PyQt6.QtWidgets import (
+    QApplication,
+    QLabel,
+    QLineEdit,
+    QMainWindow,
+    QTableWidgetItem,
+    QVBoxLayout,
+    QWidget,
+)
 import sys
 
 ## Custom functions
 from client_functions import aluno, avaliacao, disciplina, professor
-
 
 
 class MyApp(QMainWindow):
@@ -23,7 +29,7 @@ class MyApp(QMainWindow):
         print("GUI started")
 
         # Start on login page
-        self.stackedWidget.setCurrentIndex(1) # TODO
+        self.stackedWidget.setCurrentIndex(1)  # TODO
 
         # Connect login button
         self.login_button.clicked.connect(self.handle_login)
@@ -91,7 +97,9 @@ class MyApp(QMainWindow):
         # Fill table rows, columns and values
         for row_idx, row_data in enumerate(data):
             for col_idx, key in enumerate(row_data):
-                self.tableWidget.setItem(row_idx, col_idx, QTableWidgetItem(str(row_data[key])))
+                self.tableWidget.setItem(
+                    row_idx, col_idx, QTableWidgetItem(str(row_data[key]))
+                )
 
         if verbose:
             print(f"Table {table_name} loaded")
@@ -123,7 +131,9 @@ class MyApp(QMainWindow):
 
             label = QLabel(col)
             label.setAlignment(Qt.AlignmentFlag.AlignLeft)
-            label.setFixedHeight(label.fontMetrics().height())  # only enough height for text
+            label.setFixedHeight(
+                label.fontMetrics().height()
+            )  # only enough height for text
 
             line_edit = QLineEdit()
             line_edit.setFixedHeight(25)
@@ -142,13 +152,15 @@ class MyApp(QMainWindow):
         #     pass
         # self.update_button.clicked.connect(self.update_row)
 
-
     def populate_fields_from_row(self, item):
         if not hasattr(self, "fields"):
             return
 
         row = item.row()
-        headers = [self.tableWidget.horizontalHeaderItem(i).text() for i in range(self.tableWidget.columnCount())]
+        headers = [
+            self.tableWidget.horizontalHeaderItem(i).text()
+            for i in range(self.tableWidget.columnCount())
+        ]
         for col_idx, key in enumerate(headers):
             if key in self.fields:
                 table_item = self.tableWidget.item(row, col_idx)
@@ -162,7 +174,6 @@ class MyApp(QMainWindow):
             selected_item = self.listWidget.item(0)
         if selected_item:
             self.load_table(selected_item, verbose=False)
-
 
     ## Button Functions
 
@@ -200,7 +211,6 @@ class MyApp(QMainWindow):
             pass
 
         self.refresh_current_table()
-
 
     def update_row(self):
         print("Update button clicked")
@@ -271,6 +281,7 @@ class MyApp(QMainWindow):
             pass
 
         self.refresh_current_table()
+
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
